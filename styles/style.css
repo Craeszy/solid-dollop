@@ -1,0 +1,55 @@
+/* 字体和文本 */
+html {
+    /* px表示“像素（pixels）”：基础字号为 10 像素 */
+    font-size: 10px;
+    /* Google fonts 输出的 CSS */
+    font-family: 'Anton', sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+}
+
+p, li {
+    font-size: 16px;
+    /* line-height 后面可以跟不同的参数，如果是数字，就是当前字体大小乘上数字 */
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+/* 更改页面颜色 */
+html {
+    background-color: #00539F;
+}
+
+/* 文档体格式设置 */
+body {
+    /* 强制页面永远保持600像素宽 */
+    width: 600px;
+    /* 为 margin 或 padding 等属性设置两个值时，第一个值代表元素的上方和
+        下方（在这个例子中设置为 0），而第二个值代表左边和右边（在这里，
+        auto 是一个特殊的值，意思是水平方向上左右对称）。你也可以使用一个，
+        三个或四个值 */
+    margin: 0 auto;
+    /* 指定元素的背景颜色 */
+    background-color: #FF9500;
+    /* 给内边距设置四个值 */
+    padding: 0 20px 20px 20px;
+    /* 为body设置 5 像素的黑色实线边框 */
+    border: 5px solid black;
+}
+
+/* 定位页面主标题并添加样式 */
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    color: #00539F;
+    text-shadow: 3px 3px 1px black;
+}
+
+/* 图像居中 */
+img {
+    display: block;
+    margin: 0 auto;
+}
