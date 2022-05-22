@@ -1,0 +1,234 @@
+@hostname = 127.0.0.1
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+### 测试从豆瓣爬取书籍信息
+
+GET http://{{host}}/books/fetch/9787547737637
+
+
+### 测试从豆瓣爬取书籍信息
+
+GET http://{{host}}/books/fetch/9787532762804
+
+### 测试从豆瓣爬取书籍信息
+
+GET http://{{host}}/books/fetch/9787111654018
+
+### 新增书籍信息
+POST http://{{host}}/books/  HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "title": "哈利·波特与凤凰社",
+    "pic": "https://img2.doubanio.com/view/subject/s/public/s1822013.jpg",
+    "author": "[英]J·K·罗琳",
+    "publisher": "人民文学出版社",
+    "translator": "马爱农/马爱新/蔡文",
+    "pubdate": "2003-9",
+    "pages": "575",
+    "price": "59.00元",
+    "binding": "平装",
+    "series": "哈利·波特",
+    "isbn": "9787020043279"
+}
+
+### 修改书籍信息
+PUT http://{{host}}/books/3 HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "title": "哈利·波特与凤凰社",
+    "pic": "https://img2.doubanio.com/view/subject/s/public/s1822013.jpg",
+    "author": "[英]J·K·罗琳",
+    "publisher": "人民文学出版社",
+    "translator": "马爱农/马爱新/蔡文",
+    "pubdate": "2003-9",
+    "pages": "575",
+    "price": "59.00元",
+    "binding": "平装",
+    "series": "哈利·波特",
+    "isbn": "9787020043279"
+}
+
+### 删除书籍信息
+DELETE http://{{host}}/books/2 HTTP/1.1
+
+### 获取所有书籍信息列表
+GET http://{{host}}/books HTTP/1.1
+
+### 获取指定范围的书籍信息列表
+GET http://{{host}}/books?limit=10&offset=0 HTTP/1.1
+
+### 获取指定条件的书籍信息列表，可指定返回结果数量
+GET http://{{host}}/books/search?q=ok&limit=10 HTTP/1.1
+
+### 获取指定ID的书籍信息
+GET http://{{host}}/books/1 HTTP/1.1
+
+### 获取指定ISBN号的书籍
+GET http://{{host}}/books/isbn/9787532762804 HTTP/1.1
+
+
+### 用户注册
+POST http://{{host}}/users/register  HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "username": "user02",
+    "password": "123456"
+}
+
+### 用户登录
+POST http://{{host}}/users/login  HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "username": "user99",
+    "password": "123456"
+}
+
+### 用户登出
+GET http://{{host}}/users/logout  HTTP/1.1
+
+
+### 获取指定用户
+GET http://{{host}}/users/1  HTTP/1.1
+
+
+### 获取用户列表
+GET http://{{host}}/users  HTTP/1.1
+
+### 获取指定范围的用户列表
+GET http://{{host}}/users?limit=1&offset=0 HTTP/1.1
+
+### 获取指定条件的用户信息列表，可指定返回结果数量
+GET http://{{host}}/users/search?q=管理员&limit=10 HTTP/1.1
+
+
+### 新增用户
+POST http://{{host}}/users  HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "username": "user99",
+    "password": "123456",
+    "nickname": "用户99",
+    "truename": "李四",
+    "avatar": "./images/default.png",
+    "role": 2,
+    "last_login_time": 0,
+    "last_login_ip": "never login",
+    "login_count": 0,
+    "created_time": 1644742806623,
+    "created_ip": "127.0.0.1",
+    "updated_time": 1644742806623
+}
+
+### 修改用户信息
+PUT http://{{host}}/users/3 HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "username": "user99",
+    "password": "123456",
+    "nickname": "用户99",
+    "truename": "赵六",
+    "avatar": "./images/default.png",
+    "role": 2,
+    "updated_time": 1644742806623
+}
+
+### 删除用户信息
+DELETE http://{{host}}/users/3 HTTP/1.1
+
+
+
+### 获取书架中指定书籍信息
+GET http://{{host}}/bookshelves/4  HTTP/1.1
+
+
+### 获取书架中书籍列表
+GET http://{{host}}/bookshelves  HTTP/1.1
+
+### 指定用户书架中新增书籍
+POST http://{{host}}/bookshelves  HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "user_id": 3,
+    "book_id": 1,
+    "created_time": 1644742806623,
+    "updated_time": 1644742806623
+}
+
+### 修改书架中指定书籍信息
+PUT http://{{host}}/bookshelves/1 HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "read_status": 1,
+    "ranking": 5,
+    "updated_time": 1644742806623
+}
+
+### 删除书架中的指定书籍信息
+DELETE http://{{host}}/bookshelves/3 HTTP/1.1
+
+### 更新书架中书籍阅读状态
+PATCH http://{{host}}/bookshelves/read_status/2 HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "read_status": 1
+}
+
+### 更新书架中书籍评分
+PATCH http://{{host}}/bookshelves/ranking/2 HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "ranking": 9
+}
+
+
+
+### 获取评论信息
+GET http://{{host}}/reviews/2  HTTP/1.1
+
+
+### 获取指定书籍评论信息列表
+GET http://{{host}}/reviews?book_id=1  HTTP/1.1
+
+### 发表评论
+POST http://{{host}}/reviews  HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "user_id": 3,
+    "book_id": 1,
+    "title": "测试评论标题",
+    "content": "测试评论内容",
+    "created_time": 1644742806623,
+    "updated_time": 1644742806623
+}
+
+### 修改评论信息
+PUT http://{{host}}/reviews/1 HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "title": "测试评论标题modify",
+    "content": "测试评论内容modify",
+    "updated_time": 1644742806623
+}
+
+### 删除用户信息
+DELETE http://{{host}}/reviews/1 HTTP/1.1
+
+### 更新评论有用
+PATCH http://{{host}}/reviews/useful/2 HTTP/1.1
+
+### 更新书架中书籍评分
+PATCH http://{{host}}/reviews/useless/2 HTTP/1.1
